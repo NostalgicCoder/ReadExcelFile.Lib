@@ -65,7 +65,7 @@ namespace ReadExcelFile.Lib
         }
 
         /// <summary>
-        /// Read a single sheet in the spreadsheet, refine and map the cell data to a model and store as a collection of results.
+        /// Read a single sheet in the spreadsheet, refine and map the cell data to a model and store as a collection of toy results.
         /// </summary>
         /// <param name="package"></param>
         /// <param name="workSheet"></param>
@@ -181,6 +181,11 @@ namespace ReadExcelFile.Lib
             _workSheetData.Toys = _toyColl;
         }
 
+        /// <summary>
+        /// Read a single sheet in the spreadsheet, refine and map the cell data to a model and store as a collection of game results.
+        /// </summary>
+        /// <param name="package"></param>
+        /// <param name="workSheet"></param>
         private void ProcessGame(ExcelPackage package, int workSheet)
         {
             ExcelWorksheet worksheet = package.Workbook.Worksheets[workSheet];
@@ -246,10 +251,10 @@ namespace ReadExcelFile.Lib
                         game.Platform = cellVal;
                         break;
                     case 5:
-                        game.MediaType = _helpers.ConvertStringMediaType(cellVal);
+                        game.MediaType = _helpers.ConvertStringToMediaType(cellVal);
                         break;
                     case 6:
-                        game.Complete = _helpers.ConvertStringComplete(cellVal);
+                        game.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 7:
                         game.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -287,16 +292,16 @@ namespace ReadExcelFile.Lib
                         toy.Condition = cellVal;
                         break;
                     case 3:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 4:
-                        toy.DamagedAccessory = _helpers.ConvertStringDamaged(cellVal);
+                        toy.DamagedAccessory = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 5:
-                        toy.Stands = _helpers.ConvertStringComplete(cellVal);
+                        toy.Stands = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 6:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 7:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -337,7 +342,7 @@ namespace ReadExcelFile.Lib
                         toy.Condition = cellVal;
                         break;
                     case 4:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 5:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -375,13 +380,13 @@ namespace ReadExcelFile.Lib
                         toy.Condition = cellVal;
                         break;
                     case 3:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 4:
-                        toy.DamagedAccessory = _helpers.ConvertStringDamaged(cellVal);
+                        toy.DamagedAccessory = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 5:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 6:
                         toy.Boxed = (cellVal.ToLower() == "yes") ? true : false;
@@ -422,13 +427,13 @@ namespace ReadExcelFile.Lib
                         toy.Condition = cellVal;
                         break;
                     case 3:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 4:
-                        toy.DamagedAccessory = _helpers.ConvertStringDamaged(cellVal);
+                        toy.DamagedAccessory = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 5:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 6:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -472,7 +477,7 @@ namespace ReadExcelFile.Lib
                         toy.Discoloured = (cellVal.ToLower() == "yes") ? true : false;
                         break;
                     case 5:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 6:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -513,13 +518,13 @@ namespace ReadExcelFile.Lib
                         toy.Carded = (cellVal.ToLower() == "yes") ? true : false;
                         break;
                     case 4:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 5:
-                        toy.DamagedAccessory = _helpers.ConvertStringDamaged(cellVal);
+                        toy.DamagedAccessory = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 6:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 7:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -565,13 +570,13 @@ namespace ReadExcelFile.Lib
                         toy.Condition = cellVal;
                         break;
                     case 4:
-                        toy.Damaged = _helpers.ConvertStringDamaged(cellVal);
+                        toy.Damaged = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 5:
-                        toy.DamagedAccessory = _helpers.ConvertStringDamaged(cellVal);
+                        toy.DamagedAccessory = _helpers.ConvertStringToDamaged(cellVal);
                         break;
                     case 6:
-                        toy.Complete = _helpers.ConvertStringComplete(cellVal);
+                        toy.Complete = _helpers.ConvertStringToComplete(cellVal);
                         break;
                     case 7:
                         toy.Price = (cellVal != string.Empty) ? decimal.Parse(cellVal) : 0.00M;
@@ -619,7 +624,7 @@ namespace ReadExcelFile.Lib
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        Console.WriteLine(string.Format("ERROR - Failed to delete file '{0}' due to the following error: '{1}'", outputSqlScriptFile, ex.ToString()));
                     }
                 }
 

@@ -5,11 +5,11 @@ namespace ReadExcelFile.Lib.Class
     public class Helpers
     {
         /// <summary>
-        /// Massage damaged field results from the Excel file to the new naming format
+        /// Convert a spreadsheet 'Damaged' field result to more database friendly result
         /// </summary>
         /// <param name="cellVal"></param>
         /// <returns></returns>
-        public string ConvertStringDamaged(string cellVal)
+        public string ConvertStringToDamaged(string cellVal)
         {
             switch (cellVal.ToString().ToLower())
             {
@@ -29,11 +29,11 @@ namespace ReadExcelFile.Lib.Class
         }
 
         /// <summary>
-        /// Massage complete field results from the Excel file to the new naming format
+        /// Convert a spreadsheet 'Complete' field result to more database friendly result
         /// </summary>
         /// <param name="cellVal"></param>
         /// <returns></returns>
-        public string ConvertStringComplete(string cellVal)
+        public string ConvertStringToComplete(string cellVal)
         {
             switch (cellVal.ToString().ToLower())
             {
@@ -53,11 +53,11 @@ namespace ReadExcelFile.Lib.Class
         }
 
         /// <summary>
-        /// Massage media type field results from the Excel file to the new naming format
+        /// Convert a spreadsheet 'MediaType' field result to more database friendly result
         /// </summary>
         /// <param name="cellVal"></param>
         /// <returns></returns>
-        public string ConvertStringMediaType(string cellVal)
+        public string ConvertStringToMediaType(string cellVal)
         {
             switch (cellVal.ToString().ToLower())
             {
@@ -74,7 +74,7 @@ namespace ReadExcelFile.Lib.Class
         }
 
         /// <summary>
-        /// Convert string representation of a month to a integer
+        /// Convert abbreviated string representation of a month to a integer, also cater for different representations of a month result
         /// </summary>
         /// <param name="cellVal"></param>
         /// <returns></returns>
