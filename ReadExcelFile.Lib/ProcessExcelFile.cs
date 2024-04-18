@@ -21,6 +21,9 @@ namespace ReadExcelFile.Lib
 
         private FileInfo _existingFile = new FileInfo(@"D:\My Files\Documents\Toys Prices.xlsx");
 
+        private bool _outputToSingleFile = true;
+        private string _outputSqlScriptFile = @"D:\Downloads\ImportDataScript.sql";
+
         /// <summary>
         /// Open the spreadsheet, process each sheet one at a time and output the sheets results to a individual '.SQL' script file.
         /// </summary>
@@ -30,6 +33,8 @@ namespace ReadExcelFile.Lib
 
             using (ExcelPackage package = new ExcelPackage(_existingFile))
             {
+                CleanupOldFiles(_outputSqlScriptFile);
+
                 ProcessGame(package, (int)Sheet.Games);
                 WriteResultsToASqlScript(_workSheetData, Sheet.Games);
 
@@ -115,7 +120,7 @@ namespace ReadExcelFile.Lib
                             case Sheet.Tmnt:
                                 MapTmntCellValues(toy, worksheet.Cells[row, col].Value.ToString(), col);
                                 break;
-                            case Sheet.ThunderCats :
+                            case Sheet.ThunderCats:
                                 MapThunderCatsCellValues(toy, worksheet.Cells[row, col].Value.ToString(), col);
                                 break;
                             case Sheet.Mask:
@@ -603,6 +608,21 @@ namespace ReadExcelFile.Lib
 
         #endregion
 
+        private void CleanupOldFiles(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    File.Delete(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(string.Format("ERROR - Failed to delete file '{0}' due to the following error: '{1}'", filePath, ex.ToString()));
+                }
+            }
+        }
+
         /// <summary>
         /// Export worksheet data to a '.SQL' file so it can be imported into SQL Express
         /// - The purpose of this is to overcome the limitations of SQL Express and allow me to import data in from a spreadsheet (A feature that's only available on the full price SSMS or on a ETL tool and not on free tooling).
@@ -614,21 +634,14 @@ namespace ReadExcelFile.Lib
         {
             try
             {
-                string outputSqlScriptFile = string.Format(@"D:\Downloads\ImportDataScript - {0}.sql", sheet);
-
-                if (File.Exists(outputSqlScriptFile))
+                if (!_outputToSingleFile)
                 {
-                    try
-                    {
-                        File.Delete(outputSqlScriptFile);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(string.Format("ERROR - Failed to delete file '{0}' due to the following error: '{1}'", outputSqlScriptFile, ex.ToString()));
-                    }
+                    _outputSqlScriptFile = string.Format(@"D:\Downloads\ImportDataScript - {0}.sql", sheet);
+
+                    CleanupOldFiles(_outputSqlScriptFile);
                 }
 
-                using (StreamWriter writer = new StreamWriter(outputSqlScriptFile))
+                using (StreamWriter writer = new StreamWriter(_outputSqlScriptFile, true))
                 {
                     switch (sheet)
                     {
