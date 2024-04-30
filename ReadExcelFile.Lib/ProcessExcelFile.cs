@@ -660,7 +660,7 @@ namespace ReadExcelFile.Lib
                             {
                                 writer.WriteLine(string.Format("INSERT INTO Toys (Description, Colour, Damaged, DamagedAccessory, Discoloured, Carded, Boxed, Stands, ToyLine, Name, Condition, Complete, Price, Postage, SaleDate) " +
                                     "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}')",
-                                    x.Description, null, false, false, false, x.Carded, false, true, Sheet.MotuOrigins, x.Name, x.Condition, x.Complete, x.Price, x.Postage, x.SaleDate.ToString("yyyy-MM-dd HH:mm:ss.fff")));
+                                    x.Description, null, "No", "No", false, x.Carded, false, true, Sheet.MotuOrigins, x.Name, x.Condition, x.Complete, x.Price, x.Postage, x.SaleDate.ToString("yyyy-MM-dd HH:mm:ss.fff")));
 
                                 writer.WriteLine("");
                             }
@@ -700,7 +700,7 @@ namespace ReadExcelFile.Lib
                             {
                                 writer.WriteLine(string.Format("INSERT INTO Toys (Description, Colour, Damaged, DamagedAccessory, Discoloured, Carded, Boxed, Stands, ToyLine, Name, Condition, Complete, Price, Postage, SaleDate) " +
                                     "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}')",
-                                    x.Description, x.Colour, x.Damaged, false, x.Discoloured, false, false, true, Sheet.Mimp, x.Name, x.Condition, "Yes", x.Price, x.Postage, x.SaleDate.ToString("yyyy-MM-dd HH:mm:ss.fff")));
+                                    x.Description, x.Colour, x.Damaged, "No", x.Discoloured, false, false, true, Sheet.Mimp, x.Name, x.Condition, "Yes", x.Price, x.Postage, x.SaleDate.ToString("yyyy-MM-dd HH:mm:ss.fff")));
 
                                 writer.WriteLine("");
                             }
