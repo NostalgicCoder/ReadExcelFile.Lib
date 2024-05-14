@@ -1,5 +1,5 @@
 -----------------------------------------
-19th April 2024:
+14th May 2024:
 -----------------------------------------
 
 The purpose of this project was to create a quick tool that I could use to extract data from a WPS Office spreadsheet file and into a format that could be imported easily into SQL Server Express. This code base will extract the data from multiple sheets of a spreadsheet file and write it out to a ‘.SQL’ file that can be run against the database.
@@ -18,7 +18,12 @@ Technologies / Principles Used:
 - EPPlus
 - Microsoft.Office.Interop.Excel
 
-Resources:
+Resources / Credits:
 
 - https://coderwall.com/p/app3ya/read-excel-file-in-c
 - https://stackoverflow.com/questions/44916744/do-i-need-to-have-office-installed-to-use-microsoft-office-interop-excel-dll
+
+Images:
+
+![Alt text](Images/ReadExcel1.JPG)
+![Alt text](Images/ReadExcel2.JPG)
